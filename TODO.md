@@ -39,8 +39,12 @@
 - [x] 바이브코딩_CICD_기초편_v26.pdf 를 KO-EN 마크다운과 대조 검증 (217쪽 일치, 누락은 스크린샷 안 글자뿐)
 - [x] 한국어 PDF 의 영어판 만들기 — 217쪽 영어 PDF 생성 (Claude outputs/VibeCoding_CICD_Foundations_EN.pdf)
 - [x] 현재 강의 진도 파악 — 7장 7-5 (git init 까지 완료, 첫 커밋 전)
-- [ ] 7장 마무리 — 7-7/7-8 .gitignore 만들기
-- [ ] 7장 마무리 — 7-5 첫 커밋
-- [ ] 7장 마무리 — 7-9 브랜치 전략 확인
-- [ ] 7장 마무리 — 7-10 전체 환경 최종 확인
-- [ ] 7장 마무리 — 7-6 GitHub 저장소 생성 & push
+- [x] 7장 마무리 — 7-7/7-8 .gitignore 만들기 (.env 실습까지 포함)
+- [x] 7장 마무리 — 7-5 첫 커밋 (da83b39)
+- [x] 7장 마무리 — 7-9 브랜치 전략 확인 (main 단독)
+- [x] 7장 마무리 — 7-10 전체 환경 최종 확인 (node·git·python·claude 모두 기준 통과)
+- [~] 7장 마무리 — 7-6 GitHub 저장소 생성 & push (사용자가 깃허브 웹에서 빈 저장소를 만들어야 진행 가능)
+- [x] 기존 커밋 3건에서 Co-Authored-By 줄 제거 — 기여자는 BulNim 한 명
+- [x] todo-guard skip_files 에 KO-EN 전사본 추가 (PDF 는 검사 대상 확장자가 아니라 제외 불필요)
+- [x] 세션이나 기기를 다시 시작해야 하는지 확인해서 알려주기
+- [x] todo-guard 설정과 TODO.md 변경분 커밋
