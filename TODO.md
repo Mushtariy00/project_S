@@ -70,3 +70,4 @@
 - [x] Phase 2 — 2.5~2.8 CRUD API 5개
 - [x] Phase 2 — 2.9 검증 규칙 400/404/422
 - [x] Phase 2 — 2.10 pytest 매트릭스 10건 통과 (10 passed)
+- [x] Phase 2 까지 전부 push 됐는지 확인
