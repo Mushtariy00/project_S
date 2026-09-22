@@ -15,7 +15,8 @@
     "dist",
     "build",
     ".next",
-    ".idea"
+    ".idea",
+    ".pytest_cache"
   ],
   "skip_files": [
     "TODO.md",

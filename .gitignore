@@ -25,3 +25,4 @@ __pycache__/
 # todo-guard 가 실행 중에 쓰는 상태 파일
 .claude/todo-guard-state.json
 .claude/todo-guard-dirty
+.pytest_cache/

@@ -1,0 +1,36 @@
+"""앱 진입점. 검증 실패를 02-specs 가 정한 코드로 바꿔 돌려준다."""
+import logging
+
+from fastapi import FastAPI, Request
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
+
+from .db import Base, engine
+from .routers import tasks
+
+# print 디버깅 금지 (05-conventions). logging 모듈을 쓴다.
+logger = logging.getLogger(__name__)
+
+app = FastAPI(title="TaskFlow Pro API", version="0.1.0")
+
+Base.metadata.create_all(bind=engine)
+app.include_router(tasks.router)
+
+
+@app.exception_handler(RequestValidationError)
+async def on_validation_error(request: Request, exc: RequestValidationError):
+    """스펙 외 필드는 422, 나머지 형식 위반은 400 으로 돌려준다."""
+    errors = exc.errors()
+    extra = any(e.get("type") == "extra_forbidden" for e in errors)
+    code = 422 if extra else 400
+    logger.info("검증 실패 %s %s -> %s", request.method, request.url.path, code)
+    detail = [
+        {"loc": list(e.get("loc", [])), "msg": e.get("msg"), "type": e.get("type")}
+        for e in errors
+    ]
+    return JSONResponse(status_code=code, content={"detail": detail})
+
+
+@app.get("/api/health")
+def health() -> dict[str, str]:
+    return {"status": "ok"}
