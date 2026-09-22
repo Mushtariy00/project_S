@@ -1,0 +1,27 @@
+# 7-7. 올리면 안 되는 파일들
+
+# 민감 정보
+.env
+.env.*
+*.key
+*.pem
+
+# 패키지 · 가상환경
+node_modules/
+venv/
+.venv/
+
+# 캐시
+__pycache__/
+*.py[cod]
+
+# 데이터베이스
+*.db
+*.sqlite3
+
+# macOS
+.DS_Store
+
+# todo-guard 가 실행 중에 쓰는 상태 파일
+.claude/todo-guard-state.json
+.claude/todo-guard-dirty

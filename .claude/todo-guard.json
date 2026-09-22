@@ -1,0 +1,26 @@
+{
+  "doc_rules": true,
+  "extensions": [
+    ".md",
+    ".txt",
+    ".pptx"
+  ],
+  "skip_dirs": [
+    ".git",
+    ".claude",
+    "node_modules",
+    ".venv",
+    "venv",
+    "__pycache__",
+    "dist",
+    "build",
+    ".next",
+    ".idea"
+  ],
+  "skip_files": [
+    "TODO.md",
+    "CLAUDE.md",
+    "todo-guard_설치안내.md",
+    "프롬프트_모음_기초편.md"
+  ]
+}
