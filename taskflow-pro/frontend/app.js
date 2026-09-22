@@ -1,5 +1,7 @@
 // 03-design 6번 - 모듈 변수 + DOM 직접 갱신. 상태관리 라이브러리를 쓰지 않는다.
-const API = '/api/tasks';
+const API_BASE = (document.querySelector('meta[name="api-base"]') || {})
+  .content || '';
+const API = `${API_BASE}/api/tasks`;
 const POLL_MS = 3000; // 03-design 5번 - MVP 는 폴링 3초
 
 let tasks = [];

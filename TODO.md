@@ -75,3 +75,8 @@
 - [x] Phase 3 — 3.3~3.6 목록·추가·수정·삭제 화면
 - [x] Phase 3 — 3.7 StaticFiles 같은 오리진 제공 확인 (360px 눈 확인은 사용자 몫)
 - [x] Phase 3 — 3.8 커밋과 push
+- [x] Vercel CLI 설치 (vercel@59.25.0, miniconda3/bin 에 설치됨)
+- [x] Vercel 배포 준비 — vercel.json 과 API 주소 설정 분리 (frontend 는 2파일 유지)
+- [x] Vercel 배포 준비 — 백엔드 CORS 허용 (CORS_ORIGINS 비면 미적용)
+- [x] Vercel 배포 준비 — 03-design.md 에 배포 결정 기록
+- [~] Vercel 실제 배포 — 로그인이 대화형이라 사용자가 `vercel login` 을 해야 한다

@@ -1,9 +1,11 @@
 """앱 진입점. 검증 실패를 02-specs 가 정한 코드로 바꿔 돌려준다."""
 import logging
+import os
 from pathlib import Path
 
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -16,6 +18,17 @@ logger = logging.getLogger(__name__)
 app = FastAPI(title="TaskFlow Pro API", version="0.1.0")
 
 Base.metadata.create_all(bind=engine)
+
+# 분리 배포할 때만 쓴다. 비어 있으면 같은 오리진이라 CORS 가 필요 없다.
+CORS_ORIGINS = [o.strip() for o in os.getenv("CORS_ORIGINS", "").split(",") if o.strip()]
+if CORS_ORIGINS:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=CORS_ORIGINS,
+        allow_methods=["GET", "POST", "PUT", "DELETE"],
+        allow_headers=["Content-Type"],
+    )
+
 app.include_router(tasks.router)
 
 
