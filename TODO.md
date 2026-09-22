@@ -55,3 +55,7 @@
 - [~] 깃허브에 빈 저장소 만들고 push — 저장소 생성은 gh CLI 나 토큰이 없어 불가. origin 은 미리 걸어 두었고, 사용자가 웹에서 만들면 바로 push 한다
 - [x] origin 을 git@github.com:Mushtariy00/project_S.git 으로 미리 설정
 - [x] 원격 저장소 확인 후 main push
+- [x] 만든 앱을 볼 수 있는 주소 안내 + 로컬 서버 띄우기
+- [x] 9장 — taskflow-pro 폴더와 CLAUDE.md 작성 (9-1)
+- [x] 9장 — docs 6종 작성 (9-2 ~ 9-7), 문체 검사 통과
+- [x] 9장 — 8장과 9장 비교 정리 (9-8) 및 변경사항 점검, 커밋·push 완료
