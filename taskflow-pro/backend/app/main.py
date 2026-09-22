@@ -1,9 +1,11 @@
 """앱 진입점. 검증 실패를 02-specs 가 정한 코드로 바꿔 돌려준다."""
 import logging
+from pathlib import Path
 
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 
 from .db import Base, engine
 from .routers import tasks
@@ -34,3 +36,10 @@ async def on_validation_error(request: Request, exc: RequestValidationError):
 @app.get("/api/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
+
+
+# 03-design 2번 - 프론트는 백엔드가 같은 오리진에서 제공한다.
+# file:// 로 직접 열지 않는다. API 라우트 뒤에 붙여야 /api 가 가려지지 않는다.
+FRONTEND_DIR = Path(__file__).resolve().parent.parent.parent / "frontend"
+if FRONTEND_DIR.is_dir():
+    app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")

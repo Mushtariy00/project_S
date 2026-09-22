@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // 03-design 8번 - 초기값은 시스템 설정, 이후 localStorage 를 따른다.
+    tailwind.config = { darkMode: 'class' };
+    (function () {
+      var saved = localStorage.getItem('theme');
+      var dark = saved ? saved === 'dark'
+        : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (dark) document.documentElement.classList.add('dark');
+    })();
+  </script>
+</head>
+<body class="bg-slate-100 text-slate-800 dark:bg-slate-900 dark:text-slate-100
+             font-sans antialiased">
+
+  <main class="mx-auto max-w-2xl px-4 py-8">
+
+    <header class="mb-6 flex items-center justify-between gap-3">
+      <div>
+        <h1 class="text-xl font-semibold sm:text-2xl">TaskFlow Pro</h1>
+        <p class="text-sm text-slate-500 dark:text-slate-400">팀 업무 관리</p>
+      </div>
+      <button id="theme-toggle" type="button"
+              class="rounded-xl border border-slate-300 bg-white/70 px-3 py-2 text-sm
+                     shadow-sm backdrop-blur transition hover:shadow
+                     dark:border-slate-700 dark:bg-slate-800/70">
+        <span id="theme-label">다크</span>
+      </button>
+    </header>
+
+    <!-- 3.4 추가 폼 - title / due_at / status -->
+    <form id="add-form"
+          class="mb-6 rounded-2xl border border-slate-200 bg-white/70 p-4 shadow-lg
+                 backdrop-blur dark:border-slate-700 dark:bg-slate-800/70">
+      <div class="grid gap-3 sm:grid-cols-[1fr_auto_auto]">
+        <input id="f-title" type="text" maxlength="200" autocomplete="off"
+               placeholder="할 일을 적는다"
+               class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2
+                      text-sm outline-none focus:border-slate-400
+                      dark:border-slate-600 dark:bg-slate-900">
+        <input id="f-due" type="datetime-local"
+               class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2
+                      text-sm outline-none focus:border-slate-400
+                      dark:border-slate-600 dark:bg-slate-900">
+        <select id="f-status"
+                class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2
+                       text-sm outline-none dark:border-slate-600 dark:bg-slate-900">
+          <option value="todo">todo</option>
+          <option value="in_progress">in_progress</option>
+          <option value="done">done</option>
+        </select>
+      </div>
+      <button type="submit"
+              class="mt-3 w-full rounded-xl bg-slate-800 px-4 py-2 text-sm font-medium
+                     text-white shadow transition hover:bg-slate-700
+                     dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white">
+        추가
+      </button>
+    </form>
+
+    <!-- 3.3 목록 카드 -->
+    <section id="list" class="space-y-3"></section>
+    <p id="empty" class="hidden py-10 text-center text-sm text-slate-500">
+      아직 등록한 업무가 없다.
+    </p>
+  </main>
+
+  <!-- 3.5 수정 모달 - 전 필드 -->
+  <div id="edit-backdrop"
+       class="fixed inset-0 z-20 hidden items-center justify-center bg-black/40 p-4">
+    <div class="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-5
+                shadow-xl dark:border-slate-700 dark:bg-slate-800">
+      <h2 class="mb-4 text-base font-semibold">업무 수정</h2>
+      <form id="edit-form" class="space-y-3">
+        <input id="e-title" type="text" maxlength="200"
+               class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2
+                      text-sm dark:border-slate-600 dark:bg-slate-900">
+        <textarea id="e-desc" rows="3" placeholder="설명"
+                  class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2
+                         text-sm dark:border-slate-600 dark:bg-slate-900"></textarea>
+        <input id="e-due" type="datetime-local"
+               class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2
+                      text-sm dark:border-slate-600 dark:bg-slate-900">
+        <select id="e-status"
+                class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2
+                       text-sm dark:border-slate-600 dark:bg-slate-900">
+          <option value="todo">todo</option>
+          <option value="in_progress">in_progress</option>
+          <option value="done">done</option>
+        </select>
+        <div class="flex gap-2 pt-1">
+          <button type="button" id="e-cancel"
+                  class="flex-1 rounded-xl border border-slate-300 px-4 py-2 text-sm
+                         dark:border-slate-600">취소</button>
+          <button type="submit"
+                  class="flex-1 rounded-xl bg-slate-800 px-4 py-2 text-sm text-white
+                         dark:bg-slate-100 dark:text-slate-900">저장</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

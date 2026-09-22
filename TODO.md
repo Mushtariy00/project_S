@@ -71,3 +71,7 @@
 - [x] Phase 2 — 2.9 검증 규칙 400/404/422
 - [x] Phase 2 — 2.10 pytest 매트릭스 10건 통과 (10 passed)
 - [x] Phase 2 까지 전부 push 됐는지 확인
+- [x] Phase 3 — 3.1~3.2 frontend/ 두 파일과 테마 토글
+- [x] Phase 3 — 3.3~3.6 목록·추가·수정·삭제 화면
+- [x] Phase 3 — 3.7 StaticFiles 같은 오리진 제공 확인 (360px 눈 확인은 사용자 몫)
+- [x] Phase 3 — 3.8 커밋과 push
